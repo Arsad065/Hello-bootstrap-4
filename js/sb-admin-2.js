@@ -59,7 +59,7 @@
           if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-          }else{
+          } else {
             validate();
           }
           form.classList.add('was-validated');
@@ -81,14 +81,62 @@
       event.stopPropagation();
     }
     else {
-      if(username == "admin@nw.com" ){
+      if (username == "admin@nw.com") {
         alert("Password incorrect");
-      }else{
+      } else {
         alert("Email incorrect");
       }
     }
   }
 
 
+  $(function () {
+      $.get("data/products.json", function (data, status) {
+        if (status == 'success') {
+          var count = Object.keys(data).length;
+          $('#prodlist').append(count);
+        }
+      });
+      $.get("data/customers.json", function (data, status) {
+        if (status == 'success') {
+          var count = Object.keys(data).length;
+          $('#custlist').append(count);
+        }
+      });
+      $.get("data/suppliers.json", function (data, status) {
+        if (status == 'success') {
+          var count = Object.keys(data).length;
+          $('#supplist').append(count);
+        }
+      });
+      $.get("data/orders.json", function (data, status) {
+        if (status == 'success') {
+          var count = Object.keys(data).length;
+          $('#orderlist').append(count);
+        }
+      });
+
+  });
+
+  // $(function(){
+  //     $("#getdata").click(function(){
+  //         console.log('Get Data...')
+  //         $.get("imdb.json", function(data,status){
+  //             console.log(data);
+  //             console.log(status);
+  //             if(status == 'success'){
+  //                 var Searchs = data.Search;
+  //                 var tableHead = '<tr><th>Title</th><th>Year</th><th>Type</th><th>Poster</th></tr>'
+  //                 $('#datalist').append(tableHead);
+  //                 for(var index in Searchs){
+  //                     var Search = Searchs[index];
+  //                     var tableRow = '<tr><td>'+Search.Title+'</td><td>'+Search.Year+'</td><td>'+Search.Type+'</td><td><img src="'+Search.Poster+'" width="auto" height="300"></td></tr>'
+  //                     $('#datalist').append(tableRow);
+  //                 }
+  //             }
+  //         });
+  //     })
+
+  // });
 
 })(jQuery); // End of use strict
