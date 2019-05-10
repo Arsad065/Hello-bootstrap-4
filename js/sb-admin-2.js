@@ -71,7 +71,6 @@
   //login
   // Below function Executes on click of login button.
   function validate() {
-    console.log('fuck');
     var username = document.getElementById("exampleInputEmail").value;
     var password = document.getElementById("exampleInputPassword").value;
     if (username == "admin@nw.com" && password == "1234567") {
@@ -89,54 +88,53 @@
     }
   }
 
-
+  //total No. index page
   $(function () {
-      $.get("data/products.json", function (data, status) {
-        if (status == 'success') {
-          var count = Object.keys(data).length;
-          $('#prodlist').append(count);
-        }
-      });
-      $.get("data/customers.json", function (data, status) {
-        if (status == 'success') {
-          var count = Object.keys(data).length;
-          $('#custlist').append(count);
-        }
-      });
-      $.get("data/suppliers.json", function (data, status) {
-        if (status == 'success') {
-          var count = Object.keys(data).length;
-          $('#supplist').append(count);
-        }
-      });
-      $.get("data/orders.json", function (data, status) {
-        if (status == 'success') {
-          var count = Object.keys(data).length;
-          $('#orderlist').append(count);
-        }
-      });
+    $.get("data/products.json", function (data, status) {
+      if (status == 'success') {
+        var count = Object.keys(data).length;
+        $('#prodlist').append(count);
+      }
+    });
+    $.get("data/customers.json", function (data, status) {
+      if (status == 'success') {
+        var count = Object.keys(data).length;
+        $('#custlist').append(count);
+      }
+    });
+    $.get("data/suppliers.json", function (data, status) {
+      if (status == 'success') {
+        var count = Object.keys(data).length;
+        $('#supplist').append(count);
+      }
+    });
+    $.get("data/orders.json", function (data, status) {
+      if (status == 'success') {
+        var count = Object.keys(data).length;
+        $('#orderlist').append(count);
+      }
+    });
 
   });
 
-  // $(function(){
-  //     $("#getdata").click(function(){
-  //         console.log('Get Data...')
-  //         $.get("imdb.json", function(data,status){
-  //             console.log(data);
-  //             console.log(status);
-  //             if(status == 'success'){
-  //                 var Searchs = data.Search;
-  //                 var tableHead = '<tr><th>Title</th><th>Year</th><th>Type</th><th>Poster</th></tr>'
-  //                 $('#datalist').append(tableHead);
-  //                 for(var index in Searchs){
-  //                     var Search = Searchs[index];
-  //                     var tableRow = '<tr><td>'+Search.Title+'</td><td>'+Search.Year+'</td><td>'+Search.Type+'</td><td><img src="'+Search.Poster+'" width="auto" height="300"></td></tr>'
-  //                     $('#datalist').append(tableRow);
-  //                 }
-  //             }
-  //         });
-  //     })
+  $(function () {
+    $.get("data/customers.json", function (data, status) {
+      if (status == 'success') {
+        var Searchs = data;
+        // var tableHead = '<thead><tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr></thead>'
 
+        // $('#datalist').append(tableHead);
+        for (var index in Searchs) {
+          var Search = Searchs[index];
+          var tableRow = '<tbody><tr><td><a href="custdetail.html">' + Search.customerID + '</a></td><td>' + Search.companyName + '</td><td>' + Search.contactName + '</td><td>' + Search.contactTitle + '</td></tr></tbody>'
+          $('#datalist').append(tableRow);
+        }
+      }
+    });
+  });
+
+  // $(document).ready(function () {
+  //   $('#datalist').DataTable();
   // });
 
 })(jQuery); // End of use strict
