@@ -120,15 +120,19 @@
   $(function () {
     $.get("data/customers.json", function (data, status) {
       if (status == 'success') {
-        var Searchs = data;
+        var Searchs = data; 
+        var tableRow ='<tbody>';
         // var tableHead = '<thead><tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr></thead>'
-
         // $('#datalist').append(tableHead);
+
         for (var index in Searchs) {
           var Search = Searchs[index];
-          var tableRow = '<tbody><tr><td><a href="custdetail.html">' + Search.customerID + '</a></td><td>' + Search.companyName + '</td><td>' + Search.contactName + '</td><td>' + Search.contactTitle + '</td></tr></tbody>'
-          $('#datalist').append(tableRow);
+          tableRow += '<tr><td><a href="custdetail.html">' + Search.customerID + '</a></td><td>' + Search.companyName + '</td><td>' + Search.contactName + '</td><td>' + Search.contactTitle + '</td></tr>';
         }
+        tableRow += '</tbody>';
+        $('#datalist').append(tableRow);
+        $('#datalist').DataTable();
+        $('.dataTables_length').addClass('bs-select');
       }
     });
   });
