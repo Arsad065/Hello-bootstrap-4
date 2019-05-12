@@ -75,7 +75,7 @@
     var password = document.getElementById("exampleInputPassword").value;
     if (username == "admin@nw.com" && password == "1234567") {
       alert("Login successfully");
-      window.location = "index.html"; // Redirecting to other page.
+      window.location = "main.html"; // Redirecting to other page.
       event.preventDefault();
       event.stopPropagation();
     }
