@@ -123,8 +123,7 @@
       if (status == 'success') {
         var Searchs = data;
         var tableRow = '<tbody>';
-        // var tableHead = '<thead><tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr></thead>'
-        // $('#datalist').append(tableHead);
+
         for (var index in Searchs) {
           var Search = Searchs[index];
           tableRow += '<tr><td><a href="custdetail.html'+'?CustomerId='+index+'">'+ Search.customerID + '</a></td><td>' + Search.companyName + '</td><td>' + Search.contactName + '</td><td>' + Search.contactTitle + '</td></tr>';
@@ -143,9 +142,8 @@
       if (status == 'success') {
         var Searchs = data;
         var tableRow;
-        // var tableHead = '<thead><tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr></thead>'
-        // $('#datalist').append(tableHead);
-
+        $("a[href='editcust.html']").attr("href", "editcust.html?CustomerId="+urlParam('CustomerId'));
+      
         tableRow = 'ID : ' + Searchs[urlParam('CustomerId')].customerID + '<br>Name : ' + Searchs[urlParam('CustomerId')].companyName + '<br>Contact Name : ' + Searchs[urlParam('CustomerId')].contactName + '<br>Contact Title : ' + Searchs[urlParam('CustomerId')].contactTitle + '<br>Address  <br><li>Street : ' + Searchs[urlParam('CustomerId')].address.street + '<br><li>City : ' + Searchs[urlParam('CustomerId')].address.city + '<br><li>Region : ' + Searchs[urlParam('CustomerId')].address.region + '<br><li>PostalCode : ' + Searchs[urlParam('CustomerId')].address.postalCode + '<br><li>Country : ' + Searchs[urlParam('CustomerId')].address.country + '<br><li>Phone : ' + Searchs[urlParam('CustomerId')].address.phone;
 
         $('#detaillist').append(tableRow);
@@ -156,20 +154,25 @@
   });
 
 //edit
-  // $(function () {
-  //   $.get("data/customers.json", function (data, status) {
-  //     if (status == 'success') {
-  //       var Searchs = data;
-  //       var tableRow;
-  //       console.log(data);
-  //       // var tableHead = '<thead><tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr></thead>'
-  //       // $('#datalist').append(tableHead);
+  $(function () {
+    $.get("data/customers.json", function (data, status) {
+      if (status == 'success') {
+        var Searchs = data;
+        var tableRow;
 
-  //       //tableRow =  Searchs[1].customerID ;
-
-  //       $('#exampleID').append(Searchs[1].customerID);
-  //     }
-  //   });
-  // });
+        $('#exampleID').val(Searchs[urlParam('CustomerId')].customerID);
+        $('#exampleName').val(Searchs[urlParam('CustomerId')].companyName);
+        $('#exampleCName').val(Searchs[urlParam('CustomerId')].contactName);
+        $('#exampleCTitle').val(Searchs[urlParam('CustomerId')].contactTitle);
+        //address
+        $('#exampleStreet').val(Searchs[urlParam('CustomerId')].address.street);
+        $('#exampleCity').val(Searchs[urlParam('CustomerId')].address.city);
+        $('#exampleRegion').val(Searchs[urlParam('CustomerId')].address.region);
+        $('#examplePostalCodee').val(Searchs[urlParam('CustomerId')].address.postalCode);
+        $('#exampleCountry').val(Searchs[urlParam('CustomerId')].address.country);
+        $('#examplePhone').val(Searchs[urlParam('CustomerId')].address.phone);
+      }
+    });
+  });
 
 })(jQuery); // End of use strict

@@ -36,28 +36,33 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Edit Customer Detail!</h1>
                             </div>
-                            <form action="customer.html.php" class="was-validated">
+                            <form action="custdetail.html" class="user was-validated">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleID"
                                             placeholder="ID" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
-
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleName"
-                                            placeholder="Name">
+                                            placeholder="Name" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleCName"
-                                            placeholder="Contact Name">
+                                            placeholder="Contact Name" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleCTitle"
-                                            placeholder="Contact Title">
+                                            placeholder="Contact Title" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -66,31 +71,43 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleStreet"
-                                            placeholder="Street">
+                                            placeholder="Street" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleCity"
-                                            placeholder="City">
+                                            placeholder="City" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleRegion"
-                                            placeholder="Region">
+                                            placeholder="Region" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
-                                            id="examplePostalCodee" placeholder="PostalCode">
+                                            id="examplePostalCodee" placeholder="PostalCode" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleCountry"
-                                            placeholder="Country">
+                                            placeholder="Country" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="examplePhone"
-                                            placeholder="Phone">
+                                            placeholder="Phone" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
@@ -117,5 +134,19 @@
     <script src="js/sb-admin-2.js"></script>
 
 </body>
+<script>
+    // Read a page's GET URL variables and return them as an associative array.
+    $(document).ready(function () {
+        urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                .exec(window.location.search);
+
+            return (results !== null) ? results[1] || 0 : false;
+        }
+
+        // alert("CustomerId = " + urlParam('CustomerId'));
+    });
+
+</script>
 
 </html>
